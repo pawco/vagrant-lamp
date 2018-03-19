@@ -73,12 +73,12 @@ echo "-- Installing Xdebug --"
 sudo apt install php-xdebug
 
 echo "-- Configure xDebug (idekey = PHP_STORM) --"
-bash -c 'cat <<EOT >> /etc/php/7.1/mods-available/xdebug.ini
+sudo tee -a /etc/php/7.1/mods-available/xdebug.ini << END
 xdebug.remote_enable=1
 xdebug.remote_connect_back=1
 xdebug.remote_port=9000
 xdebug.idekey=PHP_STORM
-EOT'
+END
 
 echo "-- Restarting Apache --"
 sudo /etc/init.d/apache2 restart >> /vagrant/build.log 2>&1
