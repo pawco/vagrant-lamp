@@ -47,7 +47,8 @@ vagrant ssh
  - Directory shared with Host OS is /vagrant/source
  - mod rewrite will be enabled
  - MySQL user/password is root/toor
- - XDebug idekey = PHP_STORM
+ - XDebug idekey = 
+ - Remote port for XDebug is 9000
  - *ll* alias will work
  
 ## More fun facts
