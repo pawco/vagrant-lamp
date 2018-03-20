@@ -1,6 +1,8 @@
 # Vagrant LAMP 
 Complete Vagrant LAMP setup for dev environment based on Debian 9 (Stretch) with Apache 2.4, PHP 7.1 and MySQL 5.7.
 Composer and Node are available for easy package management.
+ 
+Keep in mind that this box **is not build with security in mind**, at least for now. That means that there is no firewall installed, principle of least privilege not followed, MySQL password is easy to guess and used directly in command line...)  
 
 ## Requirements
   - VirtualBox  http://www.virtualbox.org
@@ -50,9 +52,10 @@ vagrant ssh
  - XDebug idekey = PHP_STORM
  - Remote port for XDebug is 9000
  - *ll* alias will work
+ - *db* is alias for *mysql -u root -ptoor*, for quick access to MySQL 
  
 ## More fun facts
-To avoid using IP address in your browser, add following code to your */etc/hosts* (path is valid only if host OS is Linux or macOS)
+Add following code to your */etc/hosts* (Linux/macOS):
 ```
 192.168.33.10   somehost.dev
 ```
