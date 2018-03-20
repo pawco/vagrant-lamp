@@ -27,6 +27,9 @@ sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
 echo "-- Uncomment alias for ll --"
 sed -i "s/#alias ll='.*'/alias ll='ls -al'/g" /home/vagrant/.bashrc
 
+echo "-- Create alias for quick access to the MySQL --"
+echo "alias db='mysql -u root -p$MYSQL_PASS'" >> /home/vagrant/.bashrc
+
 echo "-- Installing curl --"
 sudo aptitude install -y curl >> /vagrant/build.log 2>&1
 
