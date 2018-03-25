@@ -37,7 +37,7 @@ cd myNewLampSetup
 git clone https://github.com/pawco/vagrant-lamp.git .
 vagrant up
 ```
-After machine is ready, open your favorite browser and enter IP address (192.168.33.10).
+After machine is ready, open your favorite browser and enter IP address (192.168.33.230).
 
 For ssh access type:
 ```bash
