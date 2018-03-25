@@ -58,7 +58,7 @@ vagrant ssh
 ## More fun facts
 Add following code to your */etc/hosts* (Linux/macOS):
 ```
-192.168.33.10   somehost.dev
+192.168.33.230   somehost.dev
 ```
 and than you can use *somehost.dev* in your browser instead of IP address.
 
