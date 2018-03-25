@@ -40,7 +40,7 @@ echo "-- Downloading gpg key for sury repo--"
 sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 
 echo "-- Adding php 7 packages repo --"
-echo 'deb https://packages.sury.org/php/ jessie main' | sudo tee -a /etc/apt/sources.list
+echo 'deb https://packages.sury.org/php/ stretch main' | sudo tee -a /etc/apt/sources.list
 
 echo "-- Updating package lists again after adding sury --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
@@ -70,7 +70,7 @@ echo "-- Installing MySQL server --"
 sudo aptitude install -y mysql-server >> /vagrant/build.log 2>&1
 
 echo "-- Installing PHP stuff --"
-sudo aptitude install -y libapache2-mod-php7.1 php7.1 php7.1-pdo php7.1-mysql php7.1-mbstring php7.1-xml php7.1-intl php7.1-tokenizer php7.1-gd php7.1-curl php7.1-zip >> /vagrant/build.log 2>&1
+sudo aptitude install -y libapache2-mod-php7.1 php7.1 php7.1-pdo php7.1-mysql php7.1-mbstring php7.1-xml php7.1-intl php7.1-tokenizer php7.1-gd php7.1-imagick php7.1-curl php7.1-zip >> /vagrant/build.log 2>&1
 
 echo "-- Installing Xdebug --"
 sudo apt install php-xdebug
@@ -79,7 +79,7 @@ echo "-- Configure xDebug (idekey = PHP_STORM) --"
 sudo tee -a /etc/php/7.1/mods-available/xdebug.ini << END
 xdebug.remote_enable=1
 xdebug.remote_connect_back=1
-xdebug.remote_port=9000
+xdebug.remote_port=9001
 xdebug.idekey=PHP_STORM
 END
 

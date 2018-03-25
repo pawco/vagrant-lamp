@@ -24,7 +24,8 @@ Keep in mind that this box **is not build with security in mind**, at least for 
   * php7.1-xml
   * php7.1-intl 
   * php7.1-tokenizer 
-  * php7.1-gd 
+  * php7.1-gd
+  * php7.1-imagick 
   * php7.1-curl 
   * php7.1-zip
   * php-xdebug
@@ -44,13 +45,13 @@ vagrant ssh
 ```
 
 ## Fun facts
- - IP address of your newly created box is *192.168.33.10*
+ - IP address of your newly created box is *192.168.33.230*
  - document root is */vagrant/source/public* 
  - Directory shared with Host OS is /vagrant/source
  - mod rewrite will be enabled
  - MySQL user/password is root/toor
  - XDebug idekey = PHP_STORM
- - Remote port for XDebug is 9000
+ - Remote port for XDebug is 9001
  - *ll* alias will work
  - *db* is alias for *mysql -u root -ptoor*, for quick access to MySQL 
  
