@@ -37,13 +37,13 @@ cd myNewLampSetup
 git clone https://github.com/pawco/vagrant-lamp.git .
 vagrant up
 ```
-After machine is ready, open your favorite browser and enter IP address (192.168.33.230).
+After provisioning is done, open your favorite browser and enter IP address (192.168.33.230).
 
 For ssh access type:
 ```bash
 vagrant ssh
 ```
-
+And that's it. Fully featured web server is ready, composer and npm are available for package management. 
 ## Fun facts
  - IP address of your newly created box is *192.168.33.230*
  - document root is */vagrant/source/public* 
