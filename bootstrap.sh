@@ -73,7 +73,7 @@ echo "-- Installing PHP stuff --"
 sudo aptitude install -y libapache2-mod-php7.1 php7.1 php7.1-pdo php7.1-mysql php7.1-mbstring php7.1-xml php7.1-intl php7.1-tokenizer php7.1-gd php7.1-imagick php7.1-curl php7.1-zip >> /vagrant/build.log 2>&1
 
 echo "-- Installing Xdebug --"
-sudo aptitude install php-xdebug >> /vagrant/build.log 2>&1
+sudo aptitude install -y php-xdebug >> /vagrant/build.log 2>&1
 
 echo "-- Installing libpng-dev (required for some node package) --"
 sudo aptitude install -y libpng-dev >> /vagrant/build.log 2>&1
