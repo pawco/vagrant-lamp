@@ -54,7 +54,7 @@ sudo a2enmod rewrite >> /vagrant/build.log 2>&1
 echo "-- Configure Apache --"
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 
-echo "-- Adding MySQL key --"
+echo "-- Adding GPG MySQL key --"
 wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql
 sudo apt-key add /tmp/RPM-GPG-KEY-mysql
 
