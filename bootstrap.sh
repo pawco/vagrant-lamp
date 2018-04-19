@@ -55,7 +55,8 @@ echo "-- Configure Apache --"
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 
 echo "-- Adding MySQL key --"
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5 >> /vagrant/build.log 2>&1
+wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql
+sudo apt-key add /tmp/RPM-GPG-KEY-mysql
 
 echo "-- Adding MySQL repo --"
 echo "deb http://repo.mysql.com/apt/debian/ stretch mysql-5.7" | sudo tee /etc/apt/sources.list.d/mysql.list >> /vagrant/build.log 2>&1
