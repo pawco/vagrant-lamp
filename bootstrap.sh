@@ -27,25 +27,22 @@ sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
 echo "-- Uncomment alias for ll --"
 sed -i "s/#alias ll='.*'/alias ll='ls -al'/g" /home/vagrant/.bashrc
 
-echo "-- Create alias for quick access to the MySQL (just type: db) --"
-echo "alias db='mysql -u root -p$MYSQL_PASS'" >> /home/vagrant/.bashrc
-
 echo "-- Installing curl --"
 sudo aptitude install -y curl >> /vagrant/build.log 2>&1
 
 echo "-- Installing apt-transport-https --"
 sudo aptitude install -y apt-transport-https >> /vagrant/build.log 2>&1
 
-echo "-- Downloading gpg key for sury repo--"
+echo "-- Adding GPG key for sury repo --"
 sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg >> /vagrant/build.log 2>&1
 
-echo "-- Adding php 7 packages repo --"
+echo "-- Adding PHP 7 packages repo --"
 echo 'deb https://packages.sury.org/php/ stretch main' | sudo tee -a /etc/apt/sources.list >> /vagrant/build.log 2>&1
 
 echo "-- Updating package lists again after adding sury --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
 
-echo "-- Installing apache2 --"
+echo "-- Installing Apache --"
 sudo aptitude install -y apache2 >> /vagrant/build.log 2>&1
 
 echo "-- Enabling mod rewrite --"
@@ -54,9 +51,9 @@ sudo a2enmod rewrite >> /vagrant/build.log 2>&1
 echo "-- Configure Apache --"
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 
-echo "-- Adding GPG MySQL key --"
-wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql
-sudo apt-key add /tmp/RPM-GPG-KEY-mysql
+echo "-- Adding MySQL GPG key --"
+wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql >> /vagrant/build.log 2>&1
+sudo apt-key add /tmp/RPM-GPG-KEY-mysql >> /vagrant/build.log 2>&1
 
 echo "-- Adding MySQL repo --"
 echo "deb http://repo.mysql.com/apt/debian/ stretch mysql-5.7" | sudo tee /etc/apt/sources.list.d/mysql.list >> /vagrant/build.log 2>&1
@@ -69,6 +66,9 @@ sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/r
 
 echo "-- Installing MySQL server --"
 sudo aptitude install -y mysql-server >> /vagrant/build.log 2>&1
+
+echo "-- Create alias for quick access to the MySQL (just type: db) --"
+echo "alias db='mysql -u root -p$MYSQL_PASS'" >> /home/vagrant/.bashrc
 
 echo "-- Installing PHP stuff --"
 sudo aptitude install -y libapache2-mod-php7.1 php7.1 php7.1-pdo php7.1-mysql php7.1-mbstring php7.1-xml php7.1-intl php7.1-tokenizer php7.1-gd php7.1-imagick php7.1-curl php7.1-zip >> /vagrant/build.log 2>&1
