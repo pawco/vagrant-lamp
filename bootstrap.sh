@@ -15,14 +15,17 @@ sudo apt-get install -y debconf-utils >> /vagrant/build.log 2>&1
 echo "-- Installing dirmngr --"
 sudo apt-get install dirmngr >> /vagrant/build.log 2>&1
 
+echo "-- Installing unzip --"
+sudo apt-get install -y unzip >> /vagrant/build.log 2>&1
+
 echo "-- Installing aptitude --"
 sudo apt-get -y install aptitude >> /vagrant/build.log 2>&1
 
 echo "-- Updating package lists --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
 
-echo "-- Updating system --"
-sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
+#echo "-- Updating system --"
+#//sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
 
 echo "-- Uncomment alias for ll --"
 sed -i "s/#alias ll='.*'/alias ll='ls -al'/g" /home/vagrant/.bashrc
