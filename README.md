@@ -16,6 +16,7 @@ Keep in mind that this box **is not build with security in mind**, at least for 
  * MySQL 5.7
  * Composer
  * Node
+ * Vim
  
 ## Included PHP packages
   * php7.1-pdo 
@@ -55,6 +56,35 @@ And that's it. Fully featured web server is ready, composer and npm are availabl
  - *ll* alias will work
  - *db* is alias for *mysql -u root -ptoor*, for quick access to MySQL 
  
+## Tricks
+
+### Access to your MySQL Database remotely:
+
+```bash
+# Connect to Vagrant
+vagrant ssh
+# And edit mysqld.cnf
+sudo -i
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+
+Edit this line `bind-address    = X.X.X.X` by `bind-address    = 0.0.0.0`.
+__(To save your change with vim: `:wq`)__
+
+```bash
+# Re-starting MySQL
+service mysql reload
+```
+
+And add the user `master` (you can change *master* to whatever you like) who can access to your Database remotely:
+
+```sql
+CREATE USER "master"@"localhost" IDENTIFIED BY "12345678";
+CREATE USER "master"@"%" IDENTIFIED BY "12345678";
+GRANT ALL ON *.* TO "master"@"localhost";
+GRANT ALL ON *.* TO "master"@"%";
+```
+
 ## More fun facts
 Add following code to your */etc/hosts* (Linux/macOS):
 ```
