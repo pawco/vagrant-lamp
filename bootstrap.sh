@@ -18,6 +18,9 @@ sudo apt-get install dirmngr >> /vagrant/build.log 2>&1
 echo "-- Installing unzip --"
 sudo apt-get install -y unzip >> /vagrant/build.log 2>&1
 
+echo "-- Installing vim --"
+sudo apt-get install -y vim >> /vagrant/build.log 2>&1
+
 echo "-- Installing aptitude --"
 sudo apt-get -y install aptitude >> /vagrant/build.log 2>&1
 
