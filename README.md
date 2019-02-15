@@ -14,6 +14,7 @@ Keep in mind that this box **is not build with security in mind**. That means th
  * Apache 2.4 with mod rewrite enabled
  * PHP 7.3
  * MySQL 5.7
+ * Git
  * Composer
  * Node
  

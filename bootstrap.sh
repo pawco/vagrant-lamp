@@ -93,6 +93,9 @@ END
 echo "-- Restarting Apache --"
 sudo /etc/init.d/apache2 restart >> /vagrant/build.log 2>&1
 
+echo "-- Installing Git --"
+sudo aptitude install -y git >> /vagrant/build.log 2>&1
+
 echo "-- Installing Composer --"
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
