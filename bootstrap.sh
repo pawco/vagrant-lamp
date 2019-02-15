@@ -74,7 +74,7 @@ echo "-- Create alias for quick access to the MySQL (just type: db) --"
 echo "alias db='mysql -u root -p$MYSQL_PASS'" >> /home/vagrant/.bashrc
 
 echo "-- Installing PHP stuff --"
-sudo aptitude install -y libapache2-mod-php7.1 php7.1 php7.1-pdo php7.1-mysql php7.1-mbstring php7.1-xml php7.1-intl php7.1-tokenizer php7.1-gd php7.1-imagick php7.1-curl php7.1-zip >> /vagrant/build.log 2>&1
+sudo aptitude install -y libapache2-mod-php7.3 php7.3 php7.3-pdo php7.3-mysql php7.3-mbstring php7.3-xml php7.3-intl php7.3-tokenizer php7.3-gd php7.3-imagick php7.3-curl php7.3-zip >> /vagrant/build.log 2>&1
 
 echo "-- Installing Xdebug --"
 sudo aptitude install -y php-xdebug >> /vagrant/build.log 2>&1
