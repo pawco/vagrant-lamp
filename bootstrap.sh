@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Variable that hold mysql password
+# Variables
 IP=""
 MYSQL_PASS="toor"
 
@@ -28,7 +28,7 @@ sudo aptitude update -y >> /vagrant/build.log 2>&1
 #echo "-- Updating system --"
 #//sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
 
-echo "-- Uncomment alias for ll --"
+echo "-- Uncommenting alias for ll --"
 sed -i "s/#alias ll='.*'/alias ll='ls -al'/g" /home/vagrant/.bashrc
 
 echo "-- Installing curl --"
@@ -52,7 +52,7 @@ sudo aptitude install -y apache2 >> /vagrant/build.log 2>&1
 echo "-- Enabling mod rewrite --"
 sudo a2enmod rewrite >> /vagrant/build.log 2>&1
 
-echo "-- Configure Apache --"
+echo "-- Configuring Apache --"
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 
 echo "-- Adding MySQL GPG key --"
@@ -71,7 +71,7 @@ sudo debconf-set-selections <<< "mysql-community-server mysql-community-server/r
 echo "-- Installing MySQL server --"
 sudo aptitude install -y mysql-server >> /vagrant/build.log 2>&1
 
-echo "-- Create alias for quick access to the MySQL (just type: db) --"
+echo "-- Creating alias for quick access to the MySQL (just type: db) --"
 echo "alias db='mysql -u root -p$MYSQL_PASS'" >> /home/vagrant/.bashrc
 
 echo "-- Installing PHP stuff --"
@@ -83,7 +83,7 @@ sudo aptitude install -y php-xdebug >> /vagrant/build.log 2>&1
 echo "-- Installing libpng-dev (required for some node package) --"
 sudo aptitude install -y libpng-dev >> /vagrant/build.log 2>&1
 
-echo "-- Configure xDebug (idekey = PHP_STORM) --"
+echo "-- Configuring xDebug (idekey = PHP_STORM) --"
 sudo tee -a /etc/php/7.3/mods-available/xdebug.ini << END
 xdebug.remote_enable=1
 xdebug.remote_connect_back=1
@@ -98,10 +98,10 @@ echo "-- Installing Git --"
 sudo aptitude install -y git >> /vagrant/build.log 2>&1
 
 echo "-- Installing Composer --"
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer >> /vagrant/build.log 2>&1
 
 echo "-- Installing node.js -->"
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - >> /vagrant/build.log 2>&1
 sudo aptitude install -y nodejs >> /vagrant/build.log 2>&1
 
 echo "-- Setting document root --"
