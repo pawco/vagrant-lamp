@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Variable that hold mysql password
+IP=""
 MYSQL_PASS="toor"
 
 # Set timezone to Belgrade/Serbia -> you will probably need to change this
@@ -83,7 +84,7 @@ echo "-- Installing libpng-dev (required for some node package) --"
 sudo aptitude install -y libpng-dev >> /vagrant/build.log 2>&1
 
 echo "-- Configure xDebug (idekey = PHP_STORM) --"
-sudo tee -a /etc/php/7.1/mods-available/xdebug.ini << END
+sudo tee -a /etc/php/7.3/mods-available/xdebug.ini << END
 xdebug.remote_enable=1
 xdebug.remote_connect_back=1
 xdebug.remote_port=9001
@@ -100,7 +101,7 @@ echo "-- Installing Composer --"
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 echo "-- Installing node.js -->"
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo aptitude install -y nodejs >> /vagrant/build.log 2>&1
 
 echo "-- Setting document root --"

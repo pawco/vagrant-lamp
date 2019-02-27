@@ -1,8 +1,8 @@
 # Vagrant LAMP 
 Complete Vagrant LAMP setup for dev environment based on Debian 9 (Stretch) with Apache 2.4, PHP 7.3 and MySQL 5.7.
-Composer and Node are available for easy package management.
+Composer and Node v10 are available for easy package management.
  
-Keep in mind that this box **is not build with security in mind**. That means that there is no firewall installed, principle of least privilege not followed, MySQL password is easy to guess and used directly in command line etc  
+Keep in mind that this box **is not build with security in mind**. That means that iptables is on default settings, principle of least privilege not followed, MySQL password is easy to guess and used directly in command line etc etc 
 
 ## Requirements
   - VirtualBox  http://www.virtualbox.org
@@ -16,7 +16,7 @@ Keep in mind that this box **is not build with security in mind**. That means th
  * MySQL 5.7
  * Git
  * Composer
- * Node
+ * Node v10 LTS
  
 ## Included PHP packages
   * php7.3-pdo 
