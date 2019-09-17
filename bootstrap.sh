@@ -75,7 +75,7 @@ echo "-- Creating alias for quick access to the MySQL (just type: db) --"
 echo "alias db='mysql -u root -p$MYSQL_PASS'" >> /home/vagrant/.bashrc
 
 echo "-- Installing PHP stuff --"
-sudo aptitude install -y libapache2-mod-php7.3 php7.3 php7.3-pdo php7.3-mysql php7.3-mbstring php7.3-xml php7.3-intl php7.3-tokenizer php7.3-gd php7.3-imagick php7.3-curl php7.3-zip >> /vagrant/build.log 2>&1
+sudo aptitude install -y libapache2-mod-php7.3 php7.3 php7.3-pdo php7.3-mysql php7.3-mbstring php7.3-xml php7.3-intl php7.3-tokenizer php7.3-gd php7.3-imagick php7.3-curl php7.3-zip php7.3-bcmath >> /vagrant/build.log 2>&1
 
 echo "-- Installing Xdebug --"
 sudo aptitude install -y php-xdebug >> /vagrant/build.log 2>&1
@@ -116,6 +116,10 @@ if [ -d /vagrant/source/node_modules ]; then
     echo "-- Removing node_modules folder --"
     sudo rm -rf /vagrant/source/node_modules
 fi
+echo "-- Creating node_modules folder outside synced folder  --"
+mkdir /home/vagrant/node_modules
+echo "-- Linking node_modules folder  --"
+sudo ln -fs /home/vagrant/node_modules /vagrant/source/node_modules
 if [ -d /vagrant/source/vendor ]; then
     echo "-- Removing vendor folder --"
     sudo rm -rf /vagrant/source/vendor

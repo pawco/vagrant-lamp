@@ -21,7 +21,8 @@ Keep in mind that this box **is not build with security in mind**. That means th
 ## Included PHP packages
   * php7.3-pdo 
   * php7.3-mysql 
-  * php7.3-mbstring 
+  * php7.3-mbstring
+  * php7.3-bcmath
   * php7.3-xml
   * php7.3-intl 
   * php7.3-tokenizer 
