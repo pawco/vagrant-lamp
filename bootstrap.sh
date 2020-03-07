@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Variables
-IP=""
-MYSQL_PASS="toor"
+MYSQL_PASS=$1
+XDEBUG_IDEKEY=$2
 
 # Set timezone to Belgrade/Serbia -> you will probably need to change this
 sudo unlink /etc/localtime
@@ -25,7 +25,7 @@ sudo apt-get -y install aptitude >> /vagrant/build.log 2>&1
 echo "-- Updating package lists --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
 
-#echo "-- Updating system --"
+echo "-- Updating system --"
 sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
 
 echo "-- Uncommenting alias for ll --"
@@ -74,6 +74,9 @@ sudo aptitude install -y mysql-server >> /vagrant/build.log 2>&1
 echo "-- Creating alias for quick access to the MySQL (just type: db) --"
 echo "alias db='mysql -u root -p$MYSQL_PASS'" >> /home/vagrant/.bashrc
 
+echo "-- Execute sql from quieris.sql --"
+mysql -u root -p$MYSQL_PASS < /vagrant/queries.sql >> /vagrant/build.log 2>&1
+
 echo "-- Installing PHP stuff --"
 sudo aptitude install -y libapache2-mod-php7.3 php7.3 php7.3-pdo php7.3-mysql php7.3-mbstring php7.3-xml php7.3-intl php7.3-tokenizer php7.3-gd php7.3-imagick php7.3-curl php7.3-zip php7.3-bcmath >> /vagrant/build.log 2>&1
 
@@ -88,7 +91,7 @@ sudo tee -a /etc/php/7.3/mods-available/xdebug.ini << END
 xdebug.remote_enable=1
 xdebug.remote_connect_back=1
 xdebug.remote_port=9001
-xdebug.idekey=PHP_STORM
+xdebug.idekey=$XDEBUG_IDEKEY
 END
 
 echo "-- Restarting Apache --"

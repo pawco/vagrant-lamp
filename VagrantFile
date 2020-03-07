@@ -1,12 +1,19 @@
+require 'yaml'
+configuration = YAML.load_file('config.yml')
+bootstrap_args = [configuration['mysql_pass'], configuration['xdebug_idekey']]
+
 Vagrant.configure("2") do |config|
     config.trigger.after :destroy do |trigger|
-        trigger.name = "Cleaning the mess"
-        trigger.info = "I am running before vagrant destroy!!"
-        trigger.run = {inline: "rm -rf ./source/public ./source/node_modules"}
+        trigger.info = "After destroy script"
+        trigger.run = {path: "after_destroy.sh"}
     end
-    config.vm.box = "debian/buster64"
-	config.vm.network "private_network", ip: "192.168.33.230"
-	config.vm.hostname = "webdev"
+    config.vm.box = configuration['box']
+	config.vm.network "private_network", ip: configuration['ip']
+	config.vm.hostname = configuration['hostname']
+	config.vm.provider "virtualbox" do |v|
+      v.memory = configuration['memory']
+      v.cpus = configuration['cpus']
+    end
     config.vm.synced_folder "source", "/vagrant/source",
         type: "virtualbox",
         create: true,
@@ -14,5 +21,5 @@ Vagrant.configure("2") do |config|
         owner: "vagrant",
         group: "www-data",
         mount_options: ["dmode=775,fmode=775"]
-    config.vm.provision "shell", path: "bootstrap.sh", privileged: false
+    config.vm.provision "shell", path: "bootstrap.sh", privileged: false, args: bootstrap_args
 end

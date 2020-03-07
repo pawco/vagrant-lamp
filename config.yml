@@ -1,0 +1,7 @@
+ip: 192.168.33.230
+memory: 512
+cpus: 2
+hostname: webdev
+box: "debian/buster64"
+mysql_pass: toor
+xdebug_idekey: XDEBUG_KEY

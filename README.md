@@ -52,7 +52,7 @@ And that's it. Fully featured web server is ready, composer and npm are availabl
  - Directory shared with Host OS is /vagrant/source
  - mod rewrite will be enabled
  - MySQL user/password is root/toor
- - XDebug idekey = PHP_STORM
+ - XDebug idekey = XDEBUG_KEY
  - Remote port for XDebug is 9001
  - *ll* alias will work
  - *db* is alias for *mysql -u root -ptoor*, for quick access to MySQL 
@@ -65,5 +65,12 @@ Add following code to your */etc/hosts* (Linux/macOS):
 and than you can use *somehost.dev* in your browser instead of IP address.
 
 Of course, you can change *somehost.dev* to whatever you like.
+
+## Last but not least fun facts 
+Some configuration options are in config.yml. There you can edit IP address of the box, hostname, mysql password etc
+
+If you want to execute specific mysql queries during provisioning, just add them into queries.sql file.
+That way you can easily add new non-root user, create database, grant access etc etc
+
  
 Have Fun!
