@@ -1,5 +1,5 @@
 # Vagrant LAMP 
-Complete Vagrant LAMP setup for dev environment based on Debian 9 (Stretch) with Apache 2.4, PHP 7.3 and MySQL 5.7.
+Complete Vagrant LAMP setup for dev environment based on Debian 10 (Buster) with Apache 2.4, PHP 7.3 and MySQL 5.7.
 Composer and Node v10 are available for easy package management.
  
 Keep in mind that this box **is not build with security in mind**. That means that iptables is on default settings, principle of least privilege not followed, MySQL password is easy to guess and used directly in command line etc etc 
@@ -10,7 +10,7 @@ Keep in mind that this box **is not build with security in mind**. That means th
   - Git http://git-scm.com/
 
 ## What is inside?
- * Debian 9 (Stretch)
+ * Debian 10 (Buster)
  * Apache 2.4 with mod rewrite enabled
  * PHP 7.3
  * MySQL 5.7

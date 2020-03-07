@@ -26,7 +26,7 @@ echo "-- Updating package lists --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
 
 #echo "-- Updating system --"
-#//sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
+sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
 
 echo "-- Uncommenting alias for ll --"
 sed -i "s/#alias ll='.*'/alias ll='ls -al'/g" /home/vagrant/.bashrc
@@ -41,7 +41,7 @@ echo "-- Adding GPG key for sury repo --"
 sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg >> /vagrant/build.log 2>&1
 
 echo "-- Adding PHP 7 packages repo --"
-echo 'deb https://packages.sury.org/php/ stretch main' | sudo tee -a /etc/apt/sources.list >> /vagrant/build.log 2>&1
+echo 'deb https://packages.sury.org/php/ buster main' | sudo tee -a /etc/apt/sources.list >> /vagrant/build.log 2>&1
 
 echo "-- Updating package lists again after adding sury --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
@@ -60,7 +60,7 @@ wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql >> /vagr
 sudo apt-key add /tmp/RPM-GPG-KEY-mysql >> /vagrant/build.log 2>&1
 
 echo "-- Adding MySQL repo --"
-echo "deb http://repo.mysql.com/apt/debian/ stretch mysql-5.7" | sudo tee /etc/apt/sources.list.d/mysql.list >> /vagrant/build.log 2>&1
+echo "deb http://repo.mysql.com/apt/debian/ buster mysql-5.7" | sudo tee /etc/apt/sources.list.d/mysql.list >> /vagrant/build.log 2>&1
 
 echo "-- Updating package lists after adding MySQL repo --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
@@ -100,7 +100,7 @@ sudo aptitude install -y git >> /vagrant/build.log 2>&1
 echo "-- Installing Composer --"
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer >> /vagrant/build.log 2>&1
 
-echo "-- Installing node.js -->"
+echo "-- Installing node.js --"
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - >> /vagrant/build.log 2>&1
 sudo aptitude install -y nodejs >> /vagrant/build.log 2>&1
 
