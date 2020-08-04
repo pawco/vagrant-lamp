@@ -25,8 +25,8 @@ sudo apt-get -y install aptitude >> /vagrant/build.log 2>&1
 echo "-- Updating package lists --"
 sudo aptitude update -y >> /vagrant/build.log 2>&1
 
-echo "-- Updating system --"
-sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
+#echo "-- Updating system --"
+#sudo aptitude safe-upgrade -y >> /vagrant/build.log 2>&1
 
 echo "-- Uncommenting alias for ll --"
 sed -i "s/#alias ll='.*'/alias ll='ls -al'/g" /home/vagrant/.bashrc
@@ -104,7 +104,7 @@ echo "-- Installing Composer --"
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer >> /vagrant/build.log 2>&1
 
 echo "-- Installing node.js --"
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - >> /vagrant/build.log 2>&1
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - >> /vagrant/build.log 2>&1
 sudo aptitude install -y nodejs >> /vagrant/build.log 2>&1
 
 echo "-- Setting document root --"

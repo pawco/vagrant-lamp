@@ -1,6 +1,6 @@
 # Vagrant LAMP 
 Complete Vagrant LAMP setup for dev environment based on Debian 10 (Buster) with Apache 2.4, PHP 7.3 and MySQL 5.7.
-Composer and Node v10 are available for easy package management.
+Composer and Node v12 are available for easy package management.
  
 Keep in mind that this box **is not build with security in mind**. That means that iptables is on default settings, principle of least privilege not followed, MySQL password is easy to guess and used directly in command line etc etc 
 
@@ -16,7 +16,7 @@ Keep in mind that this box **is not build with security in mind**. That means th
  * MySQL 5.7
  * Git
  * Composer
- * Node v10 LTS
+ * Node v12 LTS
  
 ## Included PHP packages
   * php7.3-pdo 
@@ -39,7 +39,7 @@ cd myNewLampSetup
 git clone https://github.com/pawco/vagrant-lamp.git .
 vagrant up
 ```
-After provisioning is done, open your favorite browser and enter IP address (192.168.33.230).
+After provisioning is completed, open your favorite browser and enter IP address (192.168.33.230).
 
 For ssh access type:
 ```bash
@@ -67,9 +67,9 @@ and than you can use *somehost.dev* in your browser instead of IP address.
 Of course, you can change *somehost.dev* to whatever you like.
 
 ## Last but not least fun facts 
-Some configuration options are in config.yml. There you can edit IP address of the box, hostname, mysql password etc
+Some configuration options are in *config.yml*. There you can edit IP address of the box, hostname, mysql password etc.
 
-If you want to execute specific mysql queries during provisioning, just add them into queries.sql file.
+If you want to execute specific mysql queries during provisioning, just add them into *queries.sql* file.
 That way you can easily add new non-root user, create database, grant access etc etc
 
  
